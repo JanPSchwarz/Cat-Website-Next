@@ -19,19 +19,20 @@ export default function App({ Component, pageProps }) {
   // page counter
   const [currentPage, setCurrentPage] = useState(0);
 
-  const URL = `https://api.thecatapi.com/v1/images/search?limit=50&page=${currentPage}&has_breeds=1&api_key=live_80QHtDPhcDJgMWfVMivtOm4RkbsEB7Op11NNA8NkImpLpcuUvYoyb12eDy5cLmnb`;
+  const maxPage = 50;
+  const catsPerSide = 10;
+  const numberOfPages = Math.ceil(maxPage / catsPerSide);
+
+  const URL = `https://api.thecatapi.com/v1/images/search?limit=${maxPage}&has_breeds=1&api_key=live_80QHtDPhcDJgMWfVMivtOm4RkbsEB7Op11NNA8NkImpLpcuUvYoyb12eDy5cLmnb`;
 
   const { data, isLoading, error } = useSWR(URL, fetcher, {
     revalidateOnFocus: false,
-    revalidateOnMount: true,
-    revalidateOnReconnect: false,
-    refreshWhenOffline: false,
-    refreshWhenHidden: false,
-    refreshInterval: 0,
   });
 
+  const cats = data;
+
   function pageDown() {
-    if (currentPage > 1) {
+    if (currentPage > 0) {
       setCurrentPage(currentPage - 1);
       window.scrollTo({ top: 0, behavior: `smooth` });
     }
@@ -39,21 +40,23 @@ export default function App({ Component, pageProps }) {
 
   // Page-Nav "Up"
   function pageUp() {
-    if (currentPage < 6) {
+    if (currentPage < numberOfPages) {
       setCurrentPage(currentPage + 1);
       window.scrollTo({ top: 0, behavior: `smooth` });
     }
   }
 
-  const cats = data;
   return (
     <>
       <GlobalStyle />
       <Component
+        cats={cats}
         pageUp={pageUp}
         pageDown={pageDown}
+        maxPage={maxPage}
         currentPage={currentPage}
-        cats={cats}
+        catsPerSide={catsPerSide}
+        numberOfPages={numberOfPages}
         isLoading={isLoading}
         error={error}
         {...pageProps}

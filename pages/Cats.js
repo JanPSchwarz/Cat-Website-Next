@@ -1,13 +1,11 @@
-import useSWR from "swr";
-
 import { useState } from "react";
 import { StyledDiv, StyledHeader, StyledHeadline } from ".";
 import { StyledNote } from "@/components/Cat-Box/cat-box.styles";
 import styled, { keyframes } from "styled-components";
-import { PageDown, PageUp } from "@/components/Navigation/Page-Navigation";
+import PageNavigation from "@/components/Navigation/Page-Navigation";
 
 import CatBox from "@/components/Cat-Box/Cat-Box";
-import Link from "next/link";
+import CatBoxHeader from "@/components/CatBoxHeader/CatBoxHeader";
 
 const rotate = keyframes`
   from {
@@ -27,12 +25,15 @@ const StyledSpan = styled.span`
 `;
 
 export default function DisplayCats({
-  cats,
   isLoading,
   error,
   currentPage,
   pageDown,
   pageUp,
+  maxPage,
+  numberOfPages,
+  catsPerSide,
+  cats,
 }) {
   // stores boolean for description toggle
   const [show, setShow] = useState([]);
@@ -50,8 +51,8 @@ export default function DisplayCats({
 
   if (error) return <h2>Error occurred...</h2>;
 
-  const startIndex = Math.min(10, currentPage * 10);
-  const endIndex = startIndex + 10;
+  const startIndex = 0 + currentPage * catsPerSide;
+  const endIndex = startIndex + catsPerSide;
   const currentCats = cats.slice(startIndex, endIndex);
 
   // description toggle for every mapped cat
@@ -61,23 +62,21 @@ export default function DisplayCats({
     setShow(updateShow);
   }
 
-  console.log(cats);
-  console.log(currentCats);
-
   return (
     <>
-      <Link href="./">
-        <StyledHeadline style={{ marginBottom: "50px" }}>
-          Cute-Cat-Generator
-        </StyledHeadline>
-      </Link>
+      <CatBoxHeader currentPage={currentPage} />
       <CatBox
         cats={currentCats}
         show={show}
         toggleDescription={toggleDescription}
       />
-      <PageDown pageDown={pageDown}>&lt;</PageDown>
-      <PageUp pageUp={pageUp}>&gt;</PageUp>
+      <PageNavigation
+        pages={numberOfPages}
+        pageDown={pageDown}
+        currentPage={currentPage}
+        pageUp={pageUp}
+        maxPage={maxPage}
+      />
       <StyledNote>Made with ❤️</StyledNote>
     </>
   );

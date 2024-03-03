@@ -66,7 +66,7 @@ export default function CatBox({ cats, toggleDescription, show }) {
             </StyledListItem>
           </StyledUnList>
 
-          <StyledDivider></StyledDivider>
+          <StyledDivider/>
         </StyledCard>
       </>
     );
