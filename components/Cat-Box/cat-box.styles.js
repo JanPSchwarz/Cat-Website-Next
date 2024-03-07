@@ -85,7 +85,7 @@ export const StyledButton = styled.button`
   border-radius: 50%;
   font-size: 1.8rem;
   color: red;
-  background-color: cornsilk;
+  background-color: rgb(255, 248, 220, 0.8);
   box-shadow: 0 0 5px 2px orange;
   border: 1px solid orange;
   display: flex;
@@ -95,4 +95,8 @@ export const StyledButton = styled.button`
   transform: ${({ $show }) => ($show ? "rotate(180deg)" : null)};
 
   transition: transform 0.3s ease-in-out;
+
+  &:hover {
+    background-color: rgb(255, 165, 0, 0.5);
+  }
 `;
