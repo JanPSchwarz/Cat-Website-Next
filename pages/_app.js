@@ -29,8 +29,6 @@ export default function App({ Component, pageProps }) {
     revalidateOnFocus: false,
   });
 
-  const cats = data;
-
   //Page-Navigatioin functions
   function pageDown() {
     if (currentPage > 0) {
@@ -54,7 +52,7 @@ export default function App({ Component, pageProps }) {
     <>
       <GlobalStyle />
       <Component
-        cats={cats}
+        cats={data}
         pageUp={pageUp}
         pageDown={pageDown}
         maxCats={maxCats}
