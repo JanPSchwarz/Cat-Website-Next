@@ -4,9 +4,9 @@ import {
   StyledImage,
   StyledImageBox,
   StyledListItem,
-  StyledNote,
   StyledSpan,
   StyledUnList,
+  StyledButton,
 } from "./cat-box.styles";
 
 export default function CatBox({ cats, toggleDescription, show }) {
@@ -15,11 +15,12 @@ export default function CatBox({ cats, toggleDescription, show }) {
     return (
       <>
         <StyledCard key={cat.id}>
-          <StyledImageBox className="image-box">
+          <StyledImageBox>
             <StyledImage
               src={cat.url}
               alt="cat"
               priority={true}
+              loading="eager"
               width={600}
               height={600}
               onClick={() => {
@@ -27,16 +28,15 @@ export default function CatBox({ cats, toggleDescription, show }) {
               }}
               $show={show[index]}
             />
-            {/* <i
-              className={`fa-solid ${
-                showDescription[index] ? "fa-arrow-up" : "fa-arrow-down"
-              }`}></i> */}
+            <StyledButton
+              onClick={() => {
+                toggleDescription(index);
+              }}
+              $show={show[index]}>
+              &darr;
+            </StyledButton>
           </StyledImageBox>
-          <StyledUnList
-            onClick={() => {
-              toggleDescription(index);
-            }}
-            $show={show[index]}>
+          <StyledUnList $show={show[index]}>
             <StyledListItem>
               Breed-Name:
               <StyledSpan>{thisCat.name}</StyledSpan>
@@ -66,7 +66,7 @@ export default function CatBox({ cats, toggleDescription, show }) {
             </StyledListItem>
           </StyledUnList>
 
-          <StyledDivider/>
+          <StyledDivider />
         </StyledCard>
       </>
     );

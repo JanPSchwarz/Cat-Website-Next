@@ -2,6 +2,7 @@ import styled from "styled-components";
 import Image from "next/image";
 
 export const StyledImage = styled(Image)`
+  position: relative;
   width: 60vw;
   height: auto;
   object-fit: contain;
@@ -45,7 +46,6 @@ export const StyledUnList = styled.ul`
   border: 2px solid black;
   line-height: 1.5;
   margin: 30px auto 50px;
-  cursor: pointer;
 `;
 
 export const StyledListItem = styled.li`
@@ -74,4 +74,25 @@ export const StyledNote = styled.p`
   position: absolute;
   right: 0;
   bottom: 0;
+`;
+
+export const StyledButton = styled.button`
+  position: absolute;
+  left: -30%;
+  bottom: 0;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  font-size: 1.8rem;
+  color: red;
+  background-color: cornsilk;
+  box-shadow: 0 0 5px 2px orange;
+  border: 1px solid orange;
+  display: flex;
+  justify-content: center;
+  cursor: pointer;
+
+  transform: ${({ $show }) => ($show ? "rotate(180deg)" : null)};
+
+  transition: transform 0.3s ease-in-out;
 `;

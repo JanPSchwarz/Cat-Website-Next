@@ -2,9 +2,9 @@ import { useState } from "react";
 import { StyledDiv, StyledHeader, StyledHeadline } from ".";
 import { StyledNote } from "@/components/Cat-Box/cat-box.styles";
 import styled, { keyframes } from "styled-components";
-import PageNavigation from "@/components/Navigation/Page-Navigation";
+import PageNavigation from "@/components/Navigation/PageNavigation";
 
-import CatBox from "@/components/Cat-Box/Cat-Box";
+import CatBox from "@/components/Cat-Box/CatBox";
 import CatBoxHeader from "@/components/CatBoxHeader/CatBoxHeader";
 
 const rotate = keyframes`
@@ -30,7 +30,7 @@ export default function DisplayCats({
   currentPage,
   pageDown,
   pageUp,
-  maxPage,
+  maxCats,
   numberOfPages,
   catsPerSide,
   cats,
@@ -64,7 +64,7 @@ export default function DisplayCats({
 
   return (
     <>
-      <CatBoxHeader currentPage={currentPage} />
+      <CatBoxHeader currentPage={currentPage} numberOfPages={numberOfPages} />
       <CatBox
         cats={currentCats}
         show={show}
@@ -75,7 +75,7 @@ export default function DisplayCats({
         pageDown={pageDown}
         currentPage={currentPage}
         pageUp={pageUp}
-        maxPage={maxPage}
+        maxCats={maxCats}
       />
       <StyledNote>Made with ❤️</StyledNote>
     </>

@@ -1,10 +1,4 @@
 import styled from "styled-components";
-import { Permanent_Marker } from "next/font/google";
-
-const permanentMarker = Permanent_Marker({
-  subsets: ["latin"],
-  weight: "400",
-});
 
 const StyledButtonDown = styled.button`
   font-size: 1.5rem;

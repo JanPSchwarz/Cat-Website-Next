@@ -43,7 +43,7 @@ export default function Home() {
   return (
     <StyledHeader>
       <StyledHeadline>Cute-Cat-Generator</StyledHeadline>
-      <StyledLink href="/Cats">
+      <StyledLink href="/cats">
         <StyledDiv>
           <span>😼</span>
         </StyledDiv>
