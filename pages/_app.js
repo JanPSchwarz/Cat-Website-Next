@@ -31,6 +31,7 @@ export default function App({ Component, pageProps }) {
 
   const cats = data;
 
+  //Page-Navigatioin functions
   function pageDown() {
     if (currentPage > 0) {
       setCurrentPage(currentPage - 1);
@@ -38,13 +39,14 @@ export default function App({ Component, pageProps }) {
     }
   }
 
-  // Page-Nav "Up"
   function pageUp() {
     if (currentPage < numberOfPages) {
       setCurrentPage(currentPage + 1);
       window.scrollTo({ top: 0, behavior: `smooth` });
     }
   }
+
+  //
 
   console.log(cats);
 

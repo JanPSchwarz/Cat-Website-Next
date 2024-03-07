@@ -46,6 +46,7 @@ export default function DisplayCats({
         <StyledDiv>
           <StyledSpan>😼</StyledSpan>
         </StyledDiv>
+        <p style={{ position: "absolute", top: "150px" }}>Is Loading...</p>
       </StyledHeader>
     );
 
