@@ -1,5 +1,24 @@
 import styled from "styled-components";
 import Image from "next/image";
+import Heart from "../../public/heart.svg";
+import Arrow from "../../public/swap-vertical.svg";
+
+export const StyledHeart = styled(Heart)`
+  width: 40px;
+  padding: 5px;
+  position: absolute;
+  bottom: -20px;
+  right: -25px;
+  background-color: cornsilk;
+  border: 1px solid orange;
+  border-radius: 50%;
+  fill: ${({ $isFavorite }) => ($isFavorite ? "red" : "black")};
+  transition: fill 0.3s ease-in-out;
+
+  @media screen and (min-width: 700px) {
+    width: 45px;
+  }
+`;
 
 export const StyledImage = styled(Image)`
   position: relative;
@@ -76,20 +95,21 @@ export const StyledNote = styled.p`
   bottom: 0;
 `;
 
-export const StyledButton = styled.button`
+export const StyledButton = styled(Arrow)`
   position: absolute;
-  left: -30%;
+  fill: orange;
+  left: -50px;
   bottom: 0;
-  width: 40px;
-  height: 40px;
+  width: 30px;
+  height: 30px;
   border-radius: 50%;
-  font-size: 1.8rem;
   color: red;
   background-color: rgb(255, 248, 220, 0.8);
   box-shadow: 0 0 5px 2px orange;
   border: 1px solid orange;
   display: flex;
   justify-content: center;
+  align-items: center;
   cursor: pointer;
 
   transform: ${({ $show }) => ($show ? "rotate(180deg)" : null)};
@@ -98,5 +118,11 @@ export const StyledButton = styled.button`
 
   &:hover {
     background-color: rgb(255, 165, 0, 0.5);
+  }
+
+  @media screen and (min-width: 700px) {
+    width: 40px;
+    height: 40px;
+    left: -70px;
   }
 `;

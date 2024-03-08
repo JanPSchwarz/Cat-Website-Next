@@ -1,6 +1,7 @@
 import { GlobalStyle } from "../styles";
 import { useState } from "react";
 import useSWR from "swr";
+import useLocalStorageState from "use-local-storage-state";
 
 async function fetcher(url) {
   const res = await fetch(url);
@@ -18,6 +19,11 @@ async function fetcher(url) {
 export default function App({ Component, pageProps }) {
   // page counter
   const [currentPage, setCurrentPage] = useState(0);
+
+  // liked Cats
+  const [likedCats, setLikedCats] = useLocalStorageState("likedCats", {
+    defaultValue: [],
+  });
 
   const maxCats = 25;
   const catsPerSide = 5;
@@ -43,10 +49,17 @@ export default function App({ Component, pageProps }) {
       window.scrollTo({ top: 0, behavior: `smooth` });
     }
   }
-
   //
 
-  console.log(data);
+  function handleToggleLike(id) {
+    const newCat = data.find((cat) => cat.id === id);
+
+    newCat.isFavorite = !newCat.isFavorite;
+
+    newCat.isFavorite
+      ? setLikedCats((prevStats) => [...prevStats, newCat])
+      : setLikedCats(likedCats.filter((cat) => !(cat.id === newCat.id)));
+  }
 
   return (
     <>
@@ -55,6 +68,7 @@ export default function App({ Component, pageProps }) {
         cats={data}
         pageUp={pageUp}
         pageDown={pageDown}
+        onToggleLike={handleToggleLike}
         maxCats={maxCats}
         currentPage={currentPage}
         catsPerSide={catsPerSide}

@@ -34,6 +34,7 @@ export default function DisplayCats({
   numberOfPages,
   catsPerSide,
   cats,
+  onToggleLike,
 }) {
   // stores boolean for description toggle
   const [show, setShow] = useState([]);
@@ -70,6 +71,7 @@ export default function DisplayCats({
         cats={currentCats}
         show={show}
         toggleDescription={toggleDescription}
+        onToggleLike={onToggleLike}
       />
       <PageNavigation
         pages={numberOfPages}

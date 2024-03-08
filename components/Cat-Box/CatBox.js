@@ -9,7 +9,14 @@ import {
   StyledButton,
 } from "./cat-box.styles";
 
-export default function CatBox({ cats, toggleDescription, show }) {
+import FavoriteButton from "../FavoriteButton/FavoriteButton";
+
+export default function CatBox({
+  cats,
+  toggleDescription,
+  show,
+  onToggleLike,
+}) {
   return cats.map((cat, index) => {
     const thisCat = cat.breeds[0];
     return (
@@ -33,8 +40,11 @@ export default function CatBox({ cats, toggleDescription, show }) {
                 toggleDescription(index);
               }}
               $show={show[index]}>
-              &darr;
             </StyledButton>
+            <FavoriteButton
+              isFavorite={cat.isFavorite}
+              onToggleLike={onToggleLike}
+              id={cat.id}></FavoriteButton>
           </StyledImageBox>
           <StyledUnList $show={show[index]}>
             <StyledListItem>
