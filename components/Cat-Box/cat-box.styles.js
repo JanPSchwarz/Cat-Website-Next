@@ -9,10 +9,10 @@ export const StyledHeart = styled(Heart)`
   position: absolute;
   bottom: -20px;
   right: -25px;
-  background-color: cornsilk;
+  background-color: rgb(255 248 220);
   border: 1px solid orange;
   border-radius: 50%;
-  fill: ${({ $isFavorite }) => ($isFavorite ? "red" : "black")};
+  fill: ${({ $isFavorite }) => ($isFavorite ? "red" : "rgba(221 23 23 / 0.55)")};
   transition: fill 0.3s ease-in-out;
 
   @media screen and (min-width: 700px) {
