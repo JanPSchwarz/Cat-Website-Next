@@ -126,6 +126,10 @@ export const StyledUnList = styled.ul`
 export const StyledListItem = styled.li`
   animation: inherit;
   -webkit-animation: inherit;
+  will-change: transform;
+  will-change: opacity;
+  will-change: max-height;
+  will-change: display;
   background-color: #ffebcd;
   margin: 3px;
   padding: 5px;
