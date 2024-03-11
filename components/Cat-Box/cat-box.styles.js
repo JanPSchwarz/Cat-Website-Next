@@ -86,10 +86,10 @@ export const StyledUnList = styled.ul`
   animation: ${({ $show }) =>
     $show
       ? css`
-          ${fadeIn} 1s forwards
+          ${fadeIn} 1s forwards ease-in-out
         `
       : css`
-          ${fadeOut} 1s forwards
+          ${fadeOut} 1s forwards ease-in-out
         `};
   flex-direction: column;
   list-style: none;
