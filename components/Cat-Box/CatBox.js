@@ -7,6 +7,7 @@ import {
   StyledSpan,
   StyledUnList,
   StyledButton,
+  StyledWrapper,
 } from "./cat-box.styles";
 
 import FavoriteButton from "../FavoriteButton/FavoriteButton";
@@ -39,42 +40,43 @@ export default function CatBox({
               onClick={() => {
                 toggleDescription(index);
               }}
-              $show={show[index]}>
-            </StyledButton>
+              $show={show[index]}></StyledButton>
             <FavoriteButton
               isFavorite={cat.isFavorite}
               onToggleLike={onToggleLike}
               id={cat.id}></FavoriteButton>
           </StyledImageBox>
-          <StyledUnList $show={show[index]}>
-            <StyledListItem>
-              Breed-Name:
-              <StyledSpan>{thisCat.name}</StyledSpan>
-            </StyledListItem>
+          <StyledWrapper $show={show[index]}>
+            <StyledUnList $show={show[index]}>
+              <StyledListItem>
+                Breed-Name:
+                <StyledSpan>{thisCat.name}</StyledSpan>
+              </StyledListItem>
 
-            <StyledListItem>
-              Origin: <StyledSpan>{thisCat.origin}</StyledSpan>
-            </StyledListItem>
+              <StyledListItem>
+                Origin: <StyledSpan>{thisCat.origin}</StyledSpan>
+              </StyledListItem>
 
-            <StyledListItem>
-              Temperament: <StyledSpan>{thisCat.temperament}</StyledSpan>
-            </StyledListItem>
+              <StyledListItem>
+                Temperament: <StyledSpan>{thisCat.temperament}</StyledSpan>
+              </StyledListItem>
 
-            <StyledListItem>
-              Description: <StyledSpan>{thisCat.description}</StyledSpan>
-            </StyledListItem>
+              <StyledListItem>
+                Description: <StyledSpan>{thisCat.description}</StyledSpan>
+              </StyledListItem>
 
-            <StyledListItem>
-              <StyledSpan>
-                <a
-                  href={thisCat.wikipedia_url}
-                  target="_blank"
-                  rel="noreferrer">
-                  Wikipedia-Article
-                </a>
-              </StyledSpan>
-            </StyledListItem>
-          </StyledUnList>
+              <StyledListItem>
+                <StyledSpan>
+                  <a
+                    href={thisCat.wikipedia_url}
+                    target="_blank"
+                    rel="noreferrer">
+                    Wikipedia-Article
+                  </a>
+                </StyledSpan>
+              </StyledListItem>
+            </StyledUnList>
+          </StyledWrapper>
 
           <StyledDivider />
         </StyledCard>

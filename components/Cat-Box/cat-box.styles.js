@@ -1,4 +1,4 @@
-import styled, { keyframes, css } from "styled-components";
+import styled from "styled-components";
 import Image from "next/image";
 import Heart from "../../public/heart.svg";
 import Arrow from "../../public/swap-vertical.svg";
@@ -9,7 +9,6 @@ export const StyledHeart = styled(Heart)`
   position: absolute;
   bottom: -20px;
   right: -25px;
-  /* background-color: rgb(253 236 203); */
   background-color: rgba(255, 235, 205, 1);
   border: 1px solid rgba(255, 166, 0, 1);
   border-radius: 50%;
@@ -53,37 +52,21 @@ export const StyledImageBox = styled.div`
   justify-content: center;
 `;
 
-// const fadeIn = keyframes`
-// from {
-//   transform: translateY(-5%);
-//   transform: scale(1, 0);
-// }
-
-// to {
-//   transform: scale(1);
-// }
-// `;
-// const fadeOut = keyframes`
-// from {
-//   opacity: 100%;
-//   -webkit-transform: scale(1);
-//   transform: scale(1);
-// }
-// to {
-//   opacity: 0%;
-//   -webkit-transform: scale(1, 0);
-//   transform: scale(1, 0);
-// }
-// `;
+export const StyledWrapper = styled.div`
+  display: grid;
+  overflow: hidden;
+  grid-template-rows: ${({ $show }) => ($show ? "1fr" : "0fr")};
+  transform: ${({ $show }) => ($show ? "scale(1)" : "scale(0)")};
+  opacity: ${({ $show }) => ($show ? "100%" : "0%")};
+  margin: ${({ $show }) => ($show ? "30px" : "0")};
+  transition: grid-template-rows 1s ease-in-out, transform 1s ease-in-out,
+    opacity 1s ease-in-out, margin 1s ease-in-out;
+`;
 
 export const StyledUnList = styled.ul`
-  /* display: ${({ $show }) => ($show ? "flex" : "none")}; */
-  display: flex;
-  transform: ${({ $show }) => ($show ? "scale(1)" : "scale(1, 0)")};
-  max-height: ${({ $show }) => ($show ? "1000px" : "0px")};
-  transition: transform 1s ease-in-out, max-height 1s ease-in-out;
-  flex-direction: column;
   list-style: none;
+  min-height: 0;
+  overflow: hidden;
   width: 60vw;
   min-width: 300px;
   max-width: 600px;
@@ -93,11 +76,11 @@ export const StyledUnList = styled.ul`
   box-shadow: 0 0 10px 4px orange;
   border: 2px solid black;
   line-height: 1.5;
-  margin: 30px auto;
 `;
 
 export const StyledListItem = styled.li`
-  transform: inherit;
+  min-height: 0;
+  overflow: hidden;
   background-color: #ffebcd;
   margin: 3px;
   padding: 5px;
@@ -116,7 +99,7 @@ export const StyledDivider = styled.div`
   height: 2px;
   width: 80vw;
   background-color: black;
-  margin: 35px 0;
+  margin-bottom: 35px;
 `;
 
 export const StyledNote = styled.p`
@@ -144,7 +127,7 @@ export const StyledButton = styled(Arrow)`
 
   transform: ${({ $show }) => ($show ? "rotate(180deg)" : null)};
 
-  transition: transform 0.8s ease-in-out;
+  transition: transform 1s ease-in-out;
 
   &:hover {
     background-color: rgba(249, 230, 156, 0.4);

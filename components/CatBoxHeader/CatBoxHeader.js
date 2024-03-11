@@ -4,7 +4,7 @@ import Link from "next/link";
 export default function CatBoxHeader({ currentPage, numberOfPages }) {
   return (
     <StyledHeader>
-      <a href={currentPage === numberOfPages ? "./Cats" : "./"}>
+      <a href={currentPage === numberOfPages ? "./cats" : "./"}>
         <StyledHeadline
           style={{
             marginBottom: currentPage === numberOfPages ? null : "50px",
