@@ -53,65 +53,38 @@ export const StyledImageBox = styled.div`
   justify-content: center;
 `;
 
-const fadeIn = keyframes`
-from {
-  /* opacity: 30%; */
-  -webkit-transform: translateY(-5%);
-  transform: translateY(-5%);
-  -webkit-transform: scale(1, 0);
-  transform: scale(1, 0);
-}
+// const fadeIn = keyframes`
+// from {
+//   transform: translateY(-5%);
+//   transform: scale(1, 0);
+// }
 
-to {
-  -webkit-transform: scale(1);
-  transform: scale(1);
-  max-height: 1000px;
-}
-`;
-const fadeOut = keyframes`
-from {
-  opacity: 100%;
-  max-height: 1000px;
-  -webkit-transform: scale(1);
-  transform: scale(1);
-  display: block;
-}
-to {
-  opacity: 0%;
-  max-height: 0px;
-  -webkit-transform: scale(1, 0);
-  transform: scale(1, 0);
-  margin: 0px;
-  display: none;
-}
-`;
+// to {
+//   transform: scale(1);
+// }
+// `;
+// const fadeOut = keyframes`
+// from {
+//   opacity: 100%;
+//   -webkit-transform: scale(1);
+//   transform: scale(1);
+// }
+// to {
+//   opacity: 0%;
+//   -webkit-transform: scale(1, 0);
+//   transform: scale(1, 0);
+// }
+// `;
 
 export const StyledUnList = styled.ul`
-  display: ${({ $show }) => ($show ? "flex" : "none")};
-  will-change: transform;
-  will-change: opacity;
-  will-change: max-height;
-  will-change: display;
-  animation: ${({ $show }) =>
-    $show
-      ? css`
-          ${fadeIn} 1s forwards ease-in-out
-        `
-      : css`
-          ${fadeOut} 1s forwards ease-in-out
-        `};
-  -webkit-animation: ${({ $show }) =>
-    $show
-      ? css`
-          ${fadeIn} 1s forwards ease-in-out
-        `
-      : css`
-          ${fadeOut} 1s forwards ease-in-out
-        `};
+  /* display: ${({ $show }) => ($show ? "flex" : "none")}; */
+  display: flex;
+  transform: ${({ $show }) => ($show ? "scale(1)" : "scale(1, 0)")};
+  max-height: ${({ $show }) => ($show ? "1000px" : "0px")};
+  transition: transform 1s ease-in-out, max-height 1s ease-in-out;
   flex-direction: column;
   list-style: none;
   width: 60vw;
-  max-height: 0px;
   min-width: 300px;
   max-width: 600px;
   padding: 10px;
@@ -124,12 +97,7 @@ export const StyledUnList = styled.ul`
 `;
 
 export const StyledListItem = styled.li`
-  animation: inherit;
-  -webkit-animation: inherit;
-  will-change: transform;
-  will-change: opacity;
-  will-change: max-height;
-  will-change: display;
+  transform: inherit;
   background-color: #ffebcd;
   margin: 3px;
   padding: 5px;
