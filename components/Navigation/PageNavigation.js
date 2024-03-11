@@ -41,7 +41,7 @@ const StyledPageDisplay = styled.p`
   right: 5%;
   color: #ff0000;
   font-weight: 1000;
-  background-color: rgb(255, 165, 0, 0.7);
+  background-color: rgb(255, 165, 0, 0.5);
   padding: 5px;
   border-radius: 10px;
 

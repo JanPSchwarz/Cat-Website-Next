@@ -35,5 +35,11 @@ body::before {
   z-index: -1;
 }
 
+:root {
+  --color: rgb(0, 0, 0);
+  --primary-one: 255, 165, 0;   // orange
+  --primary-two: 255 0 0;     // 
+  --secondary-one: rgba(148, 67, 67, 0.59);
+}
 
 `;

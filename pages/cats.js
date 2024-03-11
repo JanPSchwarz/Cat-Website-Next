@@ -64,6 +64,8 @@ export default function DisplayCats({
     setShow(updateShow);
   }
 
+  console.log(show);
+
   return (
     <>
       <CatBoxHeader currentPage={currentPage} numberOfPages={numberOfPages} />
