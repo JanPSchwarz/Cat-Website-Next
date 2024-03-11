@@ -11,7 +11,7 @@ export const StyledHeart = styled(Heart)`
   right: -25px;
   /* background-color: rgb(253 236 203); */
   background-color: rgba(255, 235, 205, 1);
-  border: 1px solid rgba(255 166 0 / 1);
+  border: 1px solid rgba(255, 166, 0, 1);
   border-radius: 50%;
   fill: ${({ $isFavorite }) =>
     $isFavorite ? "red" : "rgba(221, 23, 23, 0.4)"};
@@ -55,28 +55,25 @@ export const StyledImageBox = styled.div`
 
 const fadeIn = keyframes`
 from {
-  opacity: 30%;
+  /* opacity: 30%; */
   transform: translateY(-5%);
   transform: scale(1, 0);
-  margin: 0px;
 }
 
 to {
   transform: scale(1);
   max-height: 1000px;
-  margin: 30px
 }
 `;
 const fadeOut = keyframes`
 from {
-  opacity: 100%;
+  /* opacity: 100%; */
   max-height: 1000px;
   transform: scale(1);
-  margin: 30px;
-  display: flex;
+  display: block;
 }
 to {
-  opacity: 0%;
+  /* opacity: 0%; */
   max-height: 0px;
   transform: scale(1, 0);
   margin: 0px;
@@ -106,10 +103,11 @@ export const StyledUnList = styled.ul`
   box-shadow: 0 0 10px 4px orange;
   border: 2px solid black;
   line-height: 1.5;
-  margin: auto;
+  margin: 30px auto;
 `;
 
 export const StyledListItem = styled.li`
+  animation: inherit;
   background-color: #ffebcd;
   margin: 3px;
   padding: 5px;
@@ -128,7 +126,7 @@ export const StyledDivider = styled.div`
   height: 2px;
   width: 80vw;
   background-color: black;
-  margin: 35px 0 70px;
+  margin: 35px 0;
 `;
 
 export const StyledNote = styled.p`
