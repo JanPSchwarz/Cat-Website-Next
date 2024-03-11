@@ -73,30 +73,31 @@ from {
   max-height: 1000px;
   transform: scale(1);
   margin: 30px;
+  display: flex;
 }
 to {
   opacity: 0%;
   max-height: 0px;
-  transform: scale(0);
+  transform: scale(1, 0);
   margin: 0px;
+  display: none;
 }
 `;
 
 export const StyledUnList = styled.ul`
+  display: ${({ $show }) => ($show ? "flex" : "none")};
   animation: ${({ $show }) =>
     $show
       ? css`
-          ${fadeIn} 1.5s forwards
+          ${fadeIn} 1s forwards
         `
       : css`
-          ${fadeOut} 1.5s forwards
+          ${fadeOut} 1s forwards
         `};
   flex-direction: column;
-  transform: scale(1, 0);
   list-style: none;
   width: 60vw;
   max-height: 0px;
-  transform: translateY(0);
   min-width: 300px;
   max-width: 600px;
   padding: 10px;
