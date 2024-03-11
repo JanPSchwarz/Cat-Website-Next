@@ -17,9 +17,12 @@ export default function CatBox({
   toggleDescription,
   show,
   onToggleLike,
+  currentPage,
+  catsPerSide,
 }) {
   return cats.map((cat, index) => {
     const thisCat = cat.breeds[0];
+    const newIndex = index + currentPage * catsPerSide;
     return (
       <>
         <StyledCard key={cat.id}>
@@ -32,22 +35,22 @@ export default function CatBox({
               width={600}
               height={600}
               onClick={() => {
-                toggleDescription(index);
+                toggleDescription(newIndex);
               }}
-              $show={show[index]}
+              $show={show[newIndex]}
             />
             <StyledButton
               onClick={() => {
-                toggleDescription(index);
+                toggleDescription(newIndex);
               }}
-              $show={show[index]}></StyledButton>
+              $show={show[newIndex]}></StyledButton>
             <FavoriteButton
               isFavorite={cat.isFavorite}
               onToggleLike={onToggleLike}
               id={cat.id}></FavoriteButton>
           </StyledImageBox>
-          <StyledWrapper $show={show[index]}>
-            <StyledUnList $show={show[index]}>
+          <StyledWrapper $show={show[newIndex]}>
+            <StyledUnList $show={show[newIndex]}>
               <StyledListItem>
                 Breed-Name:
                 <StyledSpan>{thisCat.name}</StyledSpan>

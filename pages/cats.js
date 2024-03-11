@@ -74,6 +74,8 @@ export default function DisplayCats({
         show={show}
         toggleDescription={toggleDescription}
         onToggleLike={onToggleLike}
+        currentPage={currentPage}
+        catsPerSide={catsPerSide}
       />
       <PageNavigation
         pages={numberOfPages}
