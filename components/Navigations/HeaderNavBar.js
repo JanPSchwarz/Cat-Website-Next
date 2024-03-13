@@ -78,7 +78,7 @@ export default function HeaderNavBar({ href1, href2 }) {
       <StyledAnchor href="/">
         <StyledHome /> Home
       </StyledAnchor>
-      <StyledLink href="/favorite_cats">
+      <StyledLink href="/favorites">
         <StyledCat /> Cats
       </StyledLink>
     </StyledNav>
