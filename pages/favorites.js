@@ -13,6 +13,7 @@ const Wrapper = styled.div`
 
 const StyledCatEmoji = styled(CatEmoji)`
   width: 50vw;
+  max-width: 400px;
   height: auto;
   fill: black;
   margin-bottom: 50px;
