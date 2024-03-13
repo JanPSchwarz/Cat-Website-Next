@@ -38,7 +38,7 @@ export default function favoriteCatsPage({
       ) : (
         <Wrapper>
           <StyledCatEmoji></StyledCatEmoji>
-          <h2>You don't like cats?...</h2>
+          <h2>You don&apos;t like cats?...</h2>
         </Wrapper>
       )}
     </section>
