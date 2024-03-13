@@ -25,6 +25,9 @@ export default function App({ Component, pageProps }) {
     defaultValue: [],
   });
 
+  // stores boolean for description toggle
+  const [show, setShow] = useState([]);
+
   const maxCats = 25;
   const catsPerSide = 5;
   const numberOfPages = Math.ceil(maxCats / catsPerSide);
@@ -54,21 +57,37 @@ export default function App({ Component, pageProps }) {
   function handleToggleLike(id) {
     const newCat = data.find((cat) => cat.id === id);
 
-    newCat.isFavorite = !newCat.isFavorite;
+    if (newCat) {
+      newCat.isFavorite = !newCat.isFavorite;
 
-    newCat.isFavorite
-      ? setLikedCats((prevStats) => [...prevStats, newCat])
-      : setLikedCats(likedCats.filter((cat) => !(cat.id === newCat.id)));
+      newCat.isFavorite
+        ? setLikedCats((prevStats) => [...prevStats, newCat])
+        : setLikedCats(likedCats.filter((cat) => !(cat.id === newCat.id)));
+    } else {
+      setLikedCats(likedCats.filter((cat) => !(cat.id === id)));
+    }
   }
+
+  // description toggle for every mapped cat
+  function handleToggleDescription(index) {
+    const updateShow = [...show];
+    updateShow[index] = !updateShow[index];
+    setShow(updateShow);
+  }
+
+  console.log(likedCats);
 
   return (
     <>
       <GlobalStyle />
       <Component
         cats={data}
+        likedCats={likedCats}
         pageUp={pageUp}
         pageDown={pageDown}
         onToggleLike={handleToggleLike}
+        toggleDescription={handleToggleDescription}
+        show={show}
         maxCats={maxCats}
         currentPage={currentPage}
         catsPerSide={catsPerSide}

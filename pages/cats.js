@@ -2,10 +2,11 @@ import { useState } from "react";
 import { StyledDiv, StyledHeader, StyledHeadline } from ".";
 import { StyledNote } from "@/components/Cat-Box/cat-box.styles";
 import styled, { keyframes } from "styled-components";
-import PageNavigation from "@/components/Navigation/PageNavigation";
+import PageNavigation from "@/components/Navigations/PageNavigation";
 
 import CatBox from "@/components/Cat-Box/CatBox";
 import CatBoxHeader from "@/components/CatBoxHeader/CatBoxHeader";
+import HeaderNavBar from "@/components/Navigations/HeaderNavBar";
 
 const rotate = keyframes`
   from {
@@ -35,10 +36,9 @@ export default function DisplayCats({
   catsPerSide,
   cats,
   onToggleLike,
+  toggleDescription,
+  show,
 }) {
-  // stores boolean for description toggle
-  const [show, setShow] = useState([]);
-
   if (isLoading)
     return (
       //Copy from initial index.js
@@ -57,17 +57,9 @@ export default function DisplayCats({
   const endIndex = startIndex + catsPerSide;
   const currentCats = cats.slice(startIndex, endIndex);
 
-  // description toggle for every mapped cat
-  function toggleDescription(index) {
-    const updateShow = [...show];
-    updateShow[index] = !updateShow[index];
-    setShow(updateShow);
-  }
-
-  console.log(show);
-
   return (
     <>
+      <HeaderNavBar href1="/" href2="/favorite_cats" />
       <CatBoxHeader currentPage={currentPage} numberOfPages={numberOfPages} />
       <CatBox
         cats={currentCats}
