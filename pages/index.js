@@ -1,5 +1,7 @@
 import styled from "styled-components";
 import Link from "next/link";
+import HeaderNavBar from "@/components/Navigations/HeaderNavBar";
+import CatEmoji from "../public/cat-emoji.svg";
 
 const StyledHeader = styled.header`
   position: relative;
@@ -41,14 +43,17 @@ const StyledLink = styled(Link)`
 
 export default function Home() {
   return (
-    <StyledHeader>
-      <StyledHeadline>Cute-Cat-Generator</StyledHeadline>
-      <StyledLink href="/cats">
-        <StyledDiv>
-          <span>😼</span>
-        </StyledDiv>
-      </StyledLink>
-    </StyledHeader>
+    <>
+      <HeaderNavBar href1="/" href2="/favorite_cats"></HeaderNavBar>
+      <StyledHeader>
+        <StyledHeadline>Cute-Cat-Generator</StyledHeadline>
+        <StyledLink href="/cats">
+          <StyledDiv>
+            <span>😼</span>
+          </StyledDiv>
+        </StyledLink>
+      </StyledHeader>
+    </>
   );
 }
 
