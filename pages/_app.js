@@ -55,16 +55,18 @@ export default function App({ Component, pageProps }) {
   //
 
   function handleToggleLike(id) {
-    const newCat = data.find((cat) => cat.id === id);
+    const alreadyLikedCat = likedCats.find((cat) => cat.id === id);
 
-    if (newCat) {
+    if (alreadyLikedCat) {
+      setLikedCats(likedCats.filter((cat) => !(cat.id === alreadyLikedCat.id)));
+    } else {
+      const newCat = data.find((cat) => cat.id === id);
+
       newCat.isFavorite = !newCat.isFavorite;
 
       newCat.isFavorite
         ? setLikedCats((prevStats) => [...prevStats, newCat])
         : setLikedCats(likedCats.filter((cat) => !(cat.id === newCat.id)));
-    } else {
-      setLikedCats(likedCats.filter((cat) => !(cat.id === id)));
     }
   }
 

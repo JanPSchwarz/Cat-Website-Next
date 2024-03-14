@@ -19,8 +19,11 @@ export default function CatBox({
   onToggleLike,
   currentPage,
   catsPerSide,
+  likedCats,
 }) {
   return cats.map((cat, index) => {
+    const likedCat = likedCats.find(({ id }) => id === cat.id);
+
     const thisCat = cat.breeds[0];
     const newIndex = index + currentPage * catsPerSide;
     return (
@@ -45,7 +48,7 @@ export default function CatBox({
               }}
               $show={show[newIndex]}></StyledButton>
             <FavoriteButton
-              isFavorite={cat.isFavorite}
+              isFavorite={likedCat ? true : false}
               onToggleLike={onToggleLike}
               id={cat.id}></FavoriteButton>
           </StyledImageBox>

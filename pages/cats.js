@@ -38,6 +38,7 @@ export default function DisplayCats({
   onToggleLike,
   toggleDescription,
   show,
+  likedCats,
 }) {
   if (isLoading)
     return (
@@ -68,6 +69,7 @@ export default function DisplayCats({
         onToggleLike={onToggleLike}
         currentPage={currentPage}
         catsPerSide={catsPerSide}
+        likedCats={likedCats}
       />
       <PageNavigation
         pages={numberOfPages}
