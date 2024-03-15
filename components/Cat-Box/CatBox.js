@@ -31,6 +31,7 @@ export default function CatBox({
         <StyledCard key={cat.id}>
           <StyledImageBox>
             <StyledImage
+              unoptimized
               src={cat.url}
               alt="cat"
               priority={true}
