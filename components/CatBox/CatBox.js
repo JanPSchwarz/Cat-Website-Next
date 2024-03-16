@@ -8,9 +8,10 @@ import {
   StyledUnList,
   StyledButton,
   StyledWrapper,
-} from "./cat-box.styles";
+} from "./CatBox.styles";
 
 import FavoriteButton from "../FavoriteButton/FavoriteButton";
+
 
 export default function CatBox({
   cats,
@@ -22,13 +23,23 @@ export default function CatBox({
   likedCats,
 }) {
   return cats.map((cat, index) => {
+    //only for random cats @ page cats.js
+
+    // checks liked Cats and gives specific boolean for toggling color of favoriteButton
     const likedCat = likedCats.find(({ id }) => id === cat.id);
 
-    const thisCat = cat.breeds[0];
+    // needed to give an individual index for toggling Description (see useState "show"  in _app.js) dependend on Page; otherwise description toggles for cat with same index on each page because currentCats insteadt of all fetched Cats are used for mapping
     const newIndex = index + currentPage * catsPerSide;
+
+    // instead of destructuring "cat"
+    const thisCat = cat.breeds[0];
+
+    // checks if index of last Item; for specific styles as for instance the Divider
+    const lastItem = index === cats.length - 1;
+
     return (
       <>
-        <StyledCard key={cat.id}>
+        <StyledCard key={cat.id} $lastItem={lastItem}>
           <StyledImageBox>
             <StyledImage
               unoptimized
@@ -85,7 +96,7 @@ export default function CatBox({
             </StyledUnList>
           </StyledWrapper>
 
-          <StyledDivider />
+          {!lastItem && <StyledDivider />}
         </StyledCard>
       </>
     );

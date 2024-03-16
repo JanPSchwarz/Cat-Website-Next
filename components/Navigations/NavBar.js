@@ -72,7 +72,7 @@ const StyledHome = styled(Home)`
   height: 50%;
 `;
 
-export default function HeaderNavBar({ href1, href2 }) {
+export default function NavBar({ href1, href2 }) {
   return (
     <StyledNav>
       <StyledAnchor href="/">

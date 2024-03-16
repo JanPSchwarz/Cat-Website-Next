@@ -1,34 +1,16 @@
-import { useState } from "react";
-import { StyledDiv, StyledHeader, StyledHeadline } from ".";
-import { StyledNote } from "@/components/Cat-Box/cat-box.styles";
-import styled, { keyframes } from "styled-components";
+import { StyledNote } from "@/components/CatBox/CatBox.styles";
 import PageNavigation from "@/components/Navigations/PageNavigation";
 
-import CatBox from "@/components/Cat-Box/CatBox";
-import CatBoxHeader from "@/components/CatBoxHeader/CatBoxHeader";
-import HeaderNavBar from "@/components/Navigations/HeaderNavBar";
-
-const rotate = keyframes`
-  from {
-      transform: rotate(0deg);
-    }
-
-    to {
-      transform: rotate(360deg);
-    }
-`;
-
-const StyledSpan = styled.span`
-  display: inline-block;
-  animation-name: ${rotate};
-  animation-duration: 1s;
-  animation-iteration-count: infinite;
-`;
+import CatBox from "@/components/CatBox/CatBox";
+import Header from "@/components/Header/Header";
+import NavBar from "@/components/Navigations/NavBar";
+import CatInSpace from "@/components/CatInSpaceGif/CatInSpaceGif.js";
 
 export default function DisplayCats({
   isLoading,
   error,
   currentPage,
+  lastPage,
   pageDown,
   pageUp,
   maxCats,
@@ -42,17 +24,19 @@ export default function DisplayCats({
 }) {
   if (isLoading)
     return (
-      //Copy from initial index.js
-      <StyledHeader>
-        <StyledHeadline>Cute-Cat-Generator</StyledHeadline>
-        <StyledDiv>
-          <StyledSpan>😼</StyledSpan>
-        </StyledDiv>
-        <p style={{ position: "absolute", top: "200px" }}>Is Loading...</p>
-      </StyledHeader>
+      <>
+        <NavBar href1="/" href2="/favorites" />
+        <Header spinAnimation lastPage={true} hrefButton="" />
+      </>
     );
 
-  if (error) return <h2>Error occurred...</h2>;
+  if (error)
+    return (
+      <h2>
+        Error occurred: <br></br>
+        {error.message}
+      </h2>
+    );
 
   const startIndex = 0 + currentPage * catsPerSide;
   const endIndex = startIndex + catsPerSide;
@@ -60,8 +44,8 @@ export default function DisplayCats({
 
   return (
     <>
-      <HeaderNavBar href1="/" href2="/favorite_cats" />
-      <CatBoxHeader currentPage={currentPage} numberOfPages={numberOfPages} />
+      <NavBar href1="/" href2="/favorites" />
+      <Header lastPage={lastPage} hrefButton="/cats" hrefHeadline={"/"} />
       <CatBox
         cats={currentCats}
         show={show}
@@ -78,6 +62,7 @@ export default function DisplayCats({
         pageUp={pageUp}
         maxCats={maxCats}
       />
+      {lastPage && <CatInSpace />}
       <StyledNote>Made with ❤️</StyledNote>
     </>
   );

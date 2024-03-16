@@ -1,4 +1,4 @@
-import { StyledHeart } from "../Cat-Box/cat-box.styles";
+import { StyledHeart } from "../CatBox/CatBox.styles";
 
 export default function FavoriteButton({ onToggleLike, id, isFavorite }) {
   return (

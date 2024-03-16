@@ -8,7 +8,7 @@ import {
   StyledUnList,
   StyledButton,
   StyledWrapper,
-} from "../Cat-Box/cat-box.styles";
+} from "../CatBox/CatBox.styles";
 
 import FavoriteButton from "../FavoriteButton/FavoriteButton";
 
@@ -20,6 +20,8 @@ export default function FavoriteCats({
 }) {
   return cats.map((cat, index) => {
     const thisCat = cat.breeds[0];
+    const lastItem = index + 1 === cats.length;
+
     return (
       <>
         <StyledCard key={cat.id}>
@@ -78,7 +80,7 @@ export default function FavoriteCats({
             </StyledUnList>
           </StyledWrapper>
 
-          <StyledDivider />
+          {!lastItem && <StyledDivider />}
         </StyledCard>
       </>
     );

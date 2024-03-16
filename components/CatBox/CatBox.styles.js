@@ -44,6 +44,7 @@ export const StyledCard = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  ${({ $lastItem }) => ($lastItem ? "margin-bottom: 30px" : "")}
 `;
 
 export const StyledImageBox = styled.div`

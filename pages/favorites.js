@@ -1,8 +1,8 @@
 import FavoriteCats from "@/components/FavoriteCats/FavoriteCats";
 import CatEmoji from "../public/cat-emoji.svg";
 import styled from "styled-components";
-import CatBoxHeader from "@/components/CatBoxHeader/CatBoxHeader";
-import HeaderNavBar from "@/components/Navigations/HeaderNavBar";
+import Header from "@/components/Header/Header";
+import NavBar from "@/components/Navigations/NavBar";
 
 const Wrapper = styled.div`
   display: flex;
@@ -19,6 +19,10 @@ const StyledCatEmoji = styled(CatEmoji)`
   margin-bottom: 50px;
 `;
 
+const StyledSection = styled.section`
+  margin-top: 0;
+`;
+
 export default function favoriteCatsPage({
   likedCats,
   toggleDescription,
@@ -26,9 +30,9 @@ export default function favoriteCatsPage({
   onToggleLike,
 }) {
   return (
-    <section style={{ marginTop: "0" }}>
-      <HeaderNavBar href1="/" href2="/" />
-      <CatBoxHeader currentPage={null} />
+    <StyledSection>
+      <NavBar href1="/" href2="/" />
+      <Header />
       {likedCats.length ? (
         <FavoriteCats
           likedCats={likedCats}
@@ -42,6 +46,6 @@ export default function favoriteCatsPage({
           <h2>You don&apos;t like cats?...</h2>
         </Wrapper>
       )}
-    </section>
+    </StyledSection>
   );
 }

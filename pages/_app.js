@@ -32,6 +32,8 @@ export default function App({ Component, pageProps }) {
   const catsPerSide = 5;
   const numberOfPages = Math.ceil(maxCats / catsPerSide);
 
+  const lastPage = currentPage === numberOfPages;
+
   const URL = `https://api.thecatapi.com/v1/images/search?limit=${maxCats}&has_breeds=1&api_key=live_80QHtDPhcDJgMWfVMivtOm4RkbsEB7Op11NNA8NkImpLpcuUvYoyb12eDy5cLmnb`;
 
   const { data, isLoading, error } = useSWR(URL, fetcher, {
@@ -77,12 +79,11 @@ export default function App({ Component, pageProps }) {
     setShow(updateShow);
   }
 
-  console.log(likedCats);
-
   return (
     <>
       <GlobalStyle />
       <Component
+        lastPage={lastPage}
         cats={data}
         likedCats={likedCats}
         pageUp={pageUp}
