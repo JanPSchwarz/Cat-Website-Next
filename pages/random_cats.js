@@ -25,7 +25,7 @@ export default function DisplayCats({
   if (isLoading)
     return (
       <>
-        <NavBar href1="/" href2="/favorites" />
+        <NavBar href1="/" href2="/favorite_cats" />
         <Header spinAnimation lastPage={true} hrefButton="" />
       </>
     );
@@ -44,8 +44,12 @@ export default function DisplayCats({
 
   return (
     <>
-      <NavBar href1="/" href2="/favorites" />
-      <Header lastPage={lastPage} hrefButton="/cats" hrefHeadline={"/"} />
+      <NavBar href1="/" href2="/favorite_cats" />
+      <Header
+        lastPage={lastPage}
+        hrefButton="/random_cats"
+        hrefHeadline={"/"}
+      />
       <CatBox
         cats={currentCats}
         show={show}

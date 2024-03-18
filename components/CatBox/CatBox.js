@@ -12,6 +12,11 @@ import {
 
 import FavoriteButton from "../FavoriteButton/FavoriteButton";
 
+// function implemented to make the component work for both the favorites page as well as the randomPage; gives liked cat if existing
+function findLikedCat(object, catId) {
+  const likedCat = object.find(({ id }) => id === catId);
+  return likedCat;
+}
 
 export default function CatBox({
   cats,
@@ -23,19 +28,18 @@ export default function CatBox({
   likedCats,
 }) {
   return cats.map((cat, index) => {
-    //only for random cats @ page cats.js
+    // checks object (useState) of liked Cats; used for toggling color of favoriteButton; implemented for randomCats page; unnecessary for favoriteCats page
+    const likedCat = findLikedCat(likedCats, cat.id);
 
-    // checks liked Cats and gives specific boolean for toggling color of favoriteButton
-    const likedCat = likedCats.find(({ id }) => id === cat.id);
-
-    // needed to give an individual index for toggling Description (see useState "show"  in _app.js) dependend on Page; otherwise description toggles for cat with same index on each page because currentCats insteadt of all fetched Cats are used for mapping
+    // needed to give an individual index for toggling Description (see useState "show"  in _app.js) dependend on Page; otherwise description toggles for cat with same index on each page because currentCats insteadt of all fetched Cats are used for mapping; especially for randomCat Page
     const newIndex = index + currentPage * catsPerSide;
 
-    // instead of destructuring "cat"
-    const thisCat = cat.breeds[0];
+    // destructuring "cat"
+    const { name, origin, temperament, description, wikipedia_url } =
+      cat.breeds[0];
 
-    // checks if index of last Item; for specific styles as for instance the Divider
-    const lastItem = index === cats.length - 1;
+    // checks if index of last Item; for specific styles such as Divider
+    const lastItem = index + 1 === cats.length;
 
     return (
       <>
@@ -68,27 +72,24 @@ export default function CatBox({
             <StyledUnList $show={show[newIndex]}>
               <StyledListItem>
                 Breed-Name:
-                <StyledSpan>{thisCat.name}</StyledSpan>
+                <StyledSpan>{name}</StyledSpan>
               </StyledListItem>
 
               <StyledListItem>
-                Origin: <StyledSpan>{thisCat.origin}</StyledSpan>
+                Origin: <StyledSpan>{origin}</StyledSpan>
               </StyledListItem>
 
               <StyledListItem>
-                Temperament: <StyledSpan>{thisCat.temperament}</StyledSpan>
+                Temperament: <StyledSpan>{temperament}</StyledSpan>
               </StyledListItem>
 
               <StyledListItem>
-                Description: <StyledSpan>{thisCat.description}</StyledSpan>
+                Description: <StyledSpan>{description}</StyledSpan>
               </StyledListItem>
 
               <StyledListItem>
                 <StyledSpan>
-                  <a
-                    href={thisCat.wikipedia_url}
-                    target="_blank"
-                    rel="noreferrer">
+                  <a href={wikipedia_url} target="_blank" rel="noreferrer">
                     Wikipedia-Article
                   </a>
                 </StyledSpan>

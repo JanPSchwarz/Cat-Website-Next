@@ -1,8 +1,8 @@
-import FavoriteCats from "@/components/FavoriteCats/FavoriteCats";
 import CatEmoji from "../public/cat-emoji.svg";
 import styled from "styled-components";
 import Header from "@/components/Header/Header";
 import NavBar from "@/components/Navigations/NavBar";
+import CatBox from "@/components/CatBox/CatBox";
 
 const Wrapper = styled.div`
   display: flex;
@@ -31,15 +31,20 @@ export default function favoriteCatsPage({
 }) {
   return (
     <StyledSection>
-      <NavBar href1="/" href2="/" />
+      <NavBar />
       <Header />
       {likedCats.length ? (
-        <FavoriteCats
-          likedCats={likedCats}
-          toggleDescription={toggleDescription}
-          show={show}
-          onToggleLike={onToggleLike}
-        />
+        <>
+          <CatBox
+            cats={likedCats}
+            likedCats={likedCats}
+            toggleDescription={toggleDescription}
+            show={show}
+            onToggleLike={onToggleLike}
+            currentPage
+            catsPerSide
+          />
+        </>
       ) : (
         <Wrapper>
           <StyledCatEmoji></StyledCatEmoji>

@@ -14,11 +14,14 @@ const StyledNav = styled.nav`
   align-items: center;
   z-index: 1;
 
-  @media screen and (min-width: 768px) {
+  @media screen and (min-width: 700px) {
     font-size: 1.2rem;
     top: 40px;
-    left: 40px;
+    left: 10px;
     flex-direction: row;
+  }
+  @media screen and (min-width: 1000px) {
+    left: 50px;
   }
 `;
 
@@ -37,7 +40,7 @@ const StyledLink = styled(Link)`
   color: black;
   background-color: rgba(255, 255, 255, 0.601);
 
-  @media screen and (min-width: 768px) {
+  @media screen and (min-width: 700px) {
     width: 60px;
   }
 `;
@@ -57,7 +60,7 @@ const StyledAnchor = styled.a`
   color: black;
   background-color: rgba(255, 255, 255, 0.601);
 
-  @media screen and (min-width: 768px) {
+  @media screen and (min-width: 700px) {
     width: 60px;
   }
 `;
@@ -72,13 +75,13 @@ const StyledHome = styled(Home)`
   height: 50%;
 `;
 
-export default function NavBar({ href1, href2 }) {
+export default function NavBar() {
   return (
     <StyledNav>
       <StyledAnchor href="/">
         <StyledHome /> Home
       </StyledAnchor>
-      <StyledLink href="/favorites">
+      <StyledLink href="/favorite_cats">
         <StyledCat /> Cats
       </StyledLink>
     </StyledNav>

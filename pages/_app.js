@@ -60,7 +60,14 @@ export default function App({ Component, pageProps }) {
     const alreadyLikedCat = likedCats.find((cat) => cat.id === id);
 
     if (alreadyLikedCat) {
-      setLikedCats(likedCats.filter((cat) => !(cat.id === alreadyLikedCat.id)));
+      const isConfirmed = confirm(
+        "Do you want to delete that cat? It may take time to see it again..."
+      );
+      if (isConfirmed) {
+        setLikedCats(
+          likedCats.filter((cat) => !(cat.id === alreadyLikedCat.id))
+        );
+      }
     } else {
       const newCat = data.find((cat) => cat.id === id);
 

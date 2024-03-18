@@ -38,14 +38,14 @@ const StyledButtonUp = styled(StyledButtonDown)`
 const StyledPageDisplay = styled.p`
   position: fixed;
   top: 10%;
-  right: 5%;
-  color: #ff0000;
+  right: 2%;
+  color: #956666;
   font-weight: 1000;
-  background-color: rgb(255, 165, 0, 0.5);
+  background-color: rgb(255, 165, 0, 0.35);
   padding: 5px;
   border-radius: 10px;
 
-  @media screen and (min-width: 1024px) {
+  @media screen and (min-width: 1000px) {
     right: 15%;
   }
 `;

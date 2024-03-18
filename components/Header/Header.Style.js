@@ -28,7 +28,7 @@ const StyledDiv = styled.div`
   min-width: 130px;
   max-width: 300px;
   color: blue;
-  background-color: lightblue;
+  background-color: #6fd3ef;
   border: 3px black dashed;
   font-size: 2rem;
   cursor: pointer;

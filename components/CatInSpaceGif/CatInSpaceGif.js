@@ -5,6 +5,7 @@ import styled from "styled-components";
 const StyledCatInSpace = styled(Image)`
   width: 35vw;
   min-width: 200px;
+  max-width: 400px;
   height: auto;
 `;
 

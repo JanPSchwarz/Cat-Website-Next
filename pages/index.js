@@ -5,7 +5,7 @@ export default function Home({ lastPage }) {
   return (
     <>
       <NavBar href1="/" href2="/favorite_cats"></NavBar>
-      <Header lastPage={true} hrefButton="/cats" />
+      <Header lastPage={true} hrefButton="/random_cats" />
     </>
   );
 }
