@@ -15,10 +15,7 @@ export default function Header({
   return (
     <StyledHeader>
       <a href={lastPage && hrefHeadline}>
-        <StyledHeadline
-          style={{
-            marginBottom: lastPage ? "" : "50px",
-          }}>
+        <StyledHeadline $lastPage={lastPage}>
           Cute-Cat-Generator
         </StyledHeadline>
       </a>

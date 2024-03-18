@@ -1,6 +1,5 @@
 import { styled, keyframes } from "styled-components";
 import { css } from "styled-components";
-import Link from "next/link";
 
 const StyledHeader = styled.header`
   position: relative;
@@ -16,11 +15,12 @@ const StyledHeadline = styled.h1`
   font-size: 2.5rem;
   color: red;
   margin: 10px 30px;
+  margin-bottom: ${({ $lastPage }) => ($lastPage ? "" : "50px")};
   text-shadow: 0 0 5px orange;
   text-align: center;
   padding: 10px;
   border-radius: 5px;
-  cursor: pointer;
+
 `;
 
 const StyledDiv = styled.div`
@@ -31,8 +31,8 @@ const StyledDiv = styled.div`
   background-color: rgba(111, 211, 239, 0.8);
   border: 3px black dashed;
   font-size: 2rem;
-  cursor: pointer;
   border-radius: 5px;
+  cursor: pointer;
 `;
 
 const rotate = keyframes`

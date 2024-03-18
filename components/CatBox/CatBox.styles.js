@@ -14,6 +14,7 @@ export const StyledHeart = styled(Heart)`
   border-radius: 50%;
   fill: ${({ $isFavorite }) => ($isFavorite ? "red" : "#c3bfbfff")};
   transition: fill 0.3s ease-in-out;
+  cursor: pointer;
 
   @media screen and (min-width: 700px) {
     width: 45px;
@@ -140,7 +141,7 @@ export const StyledButton = styled(Arrow)`
   transition: transform 1s ease-in-out;
 
   &:hover {
-    background-color: rgba(249, 230, 156, 0.4);
+    background-color: rgba(253, 240, 189, 1);
   }
 
   @media screen and (min-width: 700px) {
