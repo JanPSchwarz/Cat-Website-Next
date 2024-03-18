@@ -12,8 +12,7 @@ export const StyledHeart = styled(Heart)`
   background-color: rgba(255, 235, 205, 1);
   border: 1px solid rgba(255, 166, 0, 1);
   border-radius: 50%;
-  fill: ${({ $isFavorite }) =>
-    $isFavorite ? "red" : "rgba(221, 23, 23, 0.4)"};
+  fill: ${({ $isFavorite }) => ($isFavorite ? "red" : "#c3bfbfff")};
   transition: fill 0.3s ease-in-out;
 
   @media screen and (min-width: 700px) {

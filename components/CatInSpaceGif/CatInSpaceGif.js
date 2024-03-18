@@ -7,6 +7,7 @@ const StyledCatInSpace = styled(Image)`
   min-width: 200px;
   max-width: 400px;
   height: auto;
+  border: 3px solid black;
 `;
 
 const StyledSection = styled.section`

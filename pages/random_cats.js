@@ -40,6 +40,7 @@ export default function DisplayCats({
 
   const startIndex = 0 + currentPage * catsPerSide;
   const endIndex = startIndex + catsPerSide;
+  // index-based specific selection of cats to give as props for catBox (via variables catsPerSide & currentPage from _app.js)
   const currentCats = cats.slice(startIndex, endIndex);
 
   return (
