@@ -1,7 +1,8 @@
 import { GlobalStyle } from "../styles";
 import { useState } from "react";
-import useSWR from "swr";
+import useSWR, { mutate } from "swr";
 import useLocalStorageState from "use-local-storage-state";
+import { useEffect } from "react";
 
 async function fetcher(url) {
   const res = await fetch(url);
@@ -28,7 +29,10 @@ export default function App({ Component, pageProps }) {
   // stores boolean for description toggle
   const [show, setShow] = useState([]);
 
-  const maxCats = 25;
+  // stores number of fetched Cats
+  const [numberOfCats, setNumberOfCats] = useState(20);
+
+  const maxCats = numberOfCats;
   const catsPerSide = 5;
   const numberOfPages = Math.ceil(maxCats / catsPerSide);
 
@@ -39,6 +43,12 @@ export default function App({ Component, pageProps }) {
   const { data, isLoading, error } = useSWR(URL, fetcher, {
     revalidateOnFocus: false,
   });
+
+  //updates useState number of cats and fetches data new
+  function handleNumberOfCats(value) {
+    setNumberOfCats(value);
+    mutate();
+  }
 
   //Page-Navigatioin functions
   function pageDown() {
@@ -60,9 +70,7 @@ export default function App({ Component, pageProps }) {
     const alreadyLikedCat = likedCats.find((cat) => cat.id === id);
 
     if (alreadyLikedCat) {
-      const isConfirmed = confirm(
-        "Do you want to delete that cat? It may take time to see it again..."
-      );
+      const isConfirmed = confirm("Are you sure you want to delete that cat?");
       if (isConfirmed) {
         setLikedCats(
           likedCats.filter((cat) => !(cat.id === alreadyLikedCat.id))
@@ -73,9 +81,7 @@ export default function App({ Component, pageProps }) {
 
       newCat.isFavorite = !newCat.isFavorite;
 
-      newCat.isFavorite
-        ? setLikedCats((prevStats) => [...prevStats, newCat])
-        : setLikedCats(likedCats.filter((cat) => !(cat.id === newCat.id)));
+      newCat.isFavorite && setLikedCats((prevStats) => [...prevStats, newCat]);
     }
   }
 
@@ -97,6 +103,7 @@ export default function App({ Component, pageProps }) {
         pageDown={pageDown}
         onToggleLike={handleToggleLike}
         toggleDescription={handleToggleDescription}
+        onChangeNumber={handleNumberOfCats}
         show={show}
         maxCats={maxCats}
         currentPage={currentPage}

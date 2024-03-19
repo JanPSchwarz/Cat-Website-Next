@@ -13,7 +13,6 @@ export default function DisplayCats({
   lastPage,
   pageDown,
   pageUp,
-  maxCats,
   numberOfPages,
   catsPerSide,
   cats,
@@ -21,6 +20,7 @@ export default function DisplayCats({
   toggleDescription,
   show,
   likedCats,
+  onChangeNumber,
 }) {
   if (isLoading)
     return (
@@ -47,9 +47,10 @@ export default function DisplayCats({
     <>
       <NavBar href1="/" href2="/favorite_cats" />
       <Header
+        onChangeNumber={onChangeNumber}
         lastPage={lastPage}
-        hrefButton="/random_cats"
-        hrefHeadline={"/"}
+        hrefButton="/"
+        hrefHeadline="/"
       />
       <CatBox
         cats={currentCats}
@@ -65,7 +66,6 @@ export default function DisplayCats({
         pageDown={pageDown}
         currentPage={currentPage}
         pageUp={pageUp}
-        maxCats={maxCats}
       />
       {lastPage && <CatInSpace />}
       <StyledNote>Made with ❤️</StyledNote>
