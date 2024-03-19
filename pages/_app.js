@@ -32,7 +32,7 @@ export default function App({ Component, pageProps }) {
   // stores number of fetched Cats
   const [numberOfCats, setNumberOfCats] = useState(20);
 
-  const maxCats = numberOfCats;
+  const maxCats = numberOfCats; // actually deprecated -> variable can be fully replaced by "numberOfCats" (change needed to be done)
   const catsPerSide = 5;
   const numberOfPages = Math.ceil(maxCats / catsPerSide);
 
@@ -44,13 +44,13 @@ export default function App({ Component, pageProps }) {
     revalidateOnFocus: false,
   });
 
-  //updates useState number of cats and fetches data new
+  //updates useState "number of cats" (=maxCats) and fetches data new; used in "Headers" Form-Component
   function handleNumberOfCats(value) {
     setNumberOfCats(value);
     mutate();
   }
 
-  //Page-Navigatioin functions
+  //Page-Navigation functions
   function pageDown() {
     if (currentPage > 0) {
       setCurrentPage(currentPage - 1);
@@ -66,6 +66,7 @@ export default function App({ Component, pageProps }) {
   }
   //
 
+  //on likeButton: it stores a fetched cat to state "likedCats" if that cat is new; a existing (already likedCat) cat gets deleted from "likedCats"
   function handleToggleLike(id) {
     const alreadyLikedCat = likedCats.find((cat) => cat.id === id);
 
